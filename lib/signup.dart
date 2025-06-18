@@ -1,35 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/signup.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFDE2606)),
-      ),
-      home:  MyHomePage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  State<SignUp> createState() => _SignUpState();
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _SignUpState extends State<SignUp> {
   final GlobalKey<FormState> _signInKey=GlobalKey();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController=TextEditingController();
@@ -45,10 +24,10 @@ class _MyHomePageState extends State<MyHomePage> {
             // Image(image: AssetImage('assets/twitter_blue.png'),
             // width: 100,),
             FaIcon(FontAwesomeIcons.twitter,
-            color: Colors.blue,
+            color:Colors.blue,
             size:70),
             SizedBox(height: 20,),
-            Text('Log in to Twitter',
+            Text('Sign up to Twitter',
             style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
             
             Container(
@@ -112,18 +91,17 @@ class _MyHomePageState extends State<MyHomePage> {
               debugPrint('Password:${_passwordController.text}');
                 }
               },
-             child: Text('Log In',
+             child: Text('Sign Up',
              style: TextStyle(color:Colors.white, fontSize: 18),)
               )
              ),
 
             TextButton(onPressed: (){
-              // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUp()));
-              Navigator.push(context,MaterialPageRoute(builder: (context)=>SignUp()));
+              Navigator.of(context).pop();
             }, 
-            child: Text("Don't have an account? Sign up here",
-           style: TextStyle(color: Colors.blue), ),
-            ),
+            child: Text("Already have an account? Log in",
+            style: TextStyle(color: Colors.blue),),
+            )
           ],
         ),
       ),
